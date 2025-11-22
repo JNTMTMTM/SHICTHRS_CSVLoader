@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='SHICTHRSCSVLoader',
-      version='1.0.0',
+      version='1.1.0',
       description='SHICTHRS CSV file io system',
       url='https://github.com/JNTMTMTM/SHICTHRS_CSVLoader',
       author='SHICTHRS',
