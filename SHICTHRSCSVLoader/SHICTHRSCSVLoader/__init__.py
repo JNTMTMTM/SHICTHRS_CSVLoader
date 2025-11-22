@@ -9,6 +9,7 @@ import os
 from colorama import init
 init()
 from .utils.SHRCSVLoader_read_csv_file import read_csv_file
+from .utils.SHRCSVLoader_write_csv_file import write_csv_file
 
 print('\033[1mWelcome to use SHRCSVLoader - CSV file io System\033[0m\n|  \033[1;34mGithub : https://github.com/JNTMTMTM/SHICTHRS_CSVLoader\033[0m')
 print('|  \033[1mAlgorithms = rule ; Questioning = approval\033[0m')
@@ -32,3 +33,19 @@ def SHRCSVLoader_read_csv_file(path : str , read_encoding : str = 'GB2312') -> d
             raise SHRCSVLoaderException(f"SHRJsonLoader [ERROR.1018] unable to find csv file. File Path : {path} NOT FOUND")
     except Exception as e:
         raise SHRCSVLoaderException(f"SHRJsonLoader [ERROR.1019] unable to read csv file. File Path : {path} | {e}")
+
+def SHRCSVLoader_write_csv_file(data: dict, path: str, write_encoding: str = 'GB2312') -> bool:
+    try:
+        if not isinstance(data , dict):
+            raise SHRCSVLoaderException("SHRCSVLoader [ERROR.1020] data must be a dictionary")
+            
+        if not (path.endswith('.csv') or path.endswith('.CSV')):
+            raise SHRCSVLoaderException(f"SHRCSVLoader [ERROR.1021] only csv file is supported not .{path.split('.')[-1]}.")
+            
+        result = write_csv_file(data, path, write_encoding)
+        
+        if not result:
+            raise SHRCSVLoaderException(f"SHRCSVLoader [ERROR.1022] unable to write csv file. File Path : {path}")
+            
+    except Exception as e:
+        raise SHRCSVLoaderException(f"SHRCSVLoader [ERROR.1023] unable to write csv file. File Path : {path} | {e}")
