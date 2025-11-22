@@ -40,7 +40,7 @@ def SHRCSVLoader_write_csv_file(data: dict, path: str, write_encoding: str = 'GB
             raise SHRCSVLoaderException("SHRCSVLoader [ERROR.1020] data must be a dictionary")
             
         if not (path.endswith('.csv') or path.endswith('.CSV')):
-            raise SHRCSVLoaderException(f"SHRCSVLoader [ERROR.1021] only csv file is supported not .{path.split('.')[-1]}.")
+            raise SHRCSVLoaderException(f"SHRCSVLoader [ERROR.1021] only .csv file is supported not .{path.split('.')[-1]}.")
             
         result = write_csv_file(data, path, write_encoding)
         
