@@ -8,6 +8,7 @@
 import os
 from colorama import init
 init()
+from .utils.SHRCSVLoader_read_csv_file import read_csv_file
 
 print('\033[1mWelcome to use SHRCSVLoader - CSV file io System\033[0m\n|  \033[1;34mGithub : https://github.com/JNTMTMTM/SHICTHRS_CSVLoader\033[0m')
 print('|  \033[1mAlgorithms = rule ; Questioning = approval\033[0m')
@@ -19,3 +20,15 @@ class SHRCSVLoaderException(BaseException):
     
     def __str__(self):
         return self.message
+
+def SHRCSVLoader_read_csv_file(path : str , read_encoding : str = 'GB2312') -> dict:
+    try:
+        if os.path.exists(path):
+            if os.path.isfile(path) and (path.endswith('.csv') or path.endswith('.CSV')):
+                return read_csv_file(path , read_encoding)
+            else:
+                raise SHRCSVLoaderException(f"SHRJsonLoader [ERROR.1017] only csv file is supported not .{path.split('.')[-1]}.")
+        else:
+            raise SHRCSVLoaderException(f"SHRJsonLoader [ERROR.1018] unable to find csv file. File Path : {path} NOT FOUND")
+    except Exception as e:
+        raise SHRCSVLoaderException(f"SHRJsonLoader [ERROR.1019] unable to read csv file. File Path : {path} | {e}")
