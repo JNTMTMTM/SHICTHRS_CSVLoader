@@ -31,11 +31,11 @@ def SHRCSVLoader_read_csv_file(path : str , read_encoding : str = 'GB2312') -> d
             if os.path.isfile(path) and (path.endswith('.csv') or path.endswith('.CSV')):
                 return read_csv_file(path , read_encoding)
             else:
-                raise SHRCSVLoaderException(f"SHRJsonLoader [ERROR.1017] only csv file is supported not .{path.split('.')[-1]}.")
+                raise SHRCSVLoaderException(f"SHRCSVLoader [ERROR.1017] only csv file is supported not .{path.split('.')[-1]}.")
         else:
-            raise SHRCSVLoaderException(f"SHRJsonLoader [ERROR.1018] unable to find csv file. File Path : {path} NOT FOUND")
+            raise SHRCSVLoaderException(f"SHRCSVLoader [ERROR.1018] unable to find csv file. File Path : {path} NOT FOUND")
     except Exception as e:
-        raise SHRCSVLoaderException(f"SHRJsonLoader [ERROR.1019] unable to read csv file. File Path : {path} | {e}")
+        raise SHRCSVLoaderException(f"SHRCSVLoader [ERROR.1019] unable to read csv file. File Path : {path} | {e}")
 
 def SHRCSVLoader_write_csv_file(data: dict, path: str, write_encoding: str = 'GB2312') -> bool:
     try:
