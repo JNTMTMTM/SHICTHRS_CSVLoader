@@ -18,7 +18,7 @@ print('|  \033[1mCopyright : © 2025-2026 SHICTHRS, Std. All rights reserved.\03
 
 __all__ = ['SHRCSVLoader_read_csv_file' , 'SHRCSVLoader_write_csv_file' , 'SHRCSVLoader_insert_csv_file']
 
-class SHRCSVLoaderException(BaseException):
+class SHRCSVLoaderException(Exception):
     def __init__(self , message: str) -> None:
         self.message = message
     
